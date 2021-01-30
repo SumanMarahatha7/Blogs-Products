@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'blogs',
     'products',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -64,7 +65,8 @@ REST_FRAMEWORK = {
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+    ],
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
 
 ROOT_URLCONF = 'BP.urls'
@@ -139,7 +141,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 
 
 MEDIA_URL = '/media/'
