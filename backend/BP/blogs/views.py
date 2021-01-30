@@ -1,3 +1,26 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from rest_framework.views import Response
+from rest_framework import generics
+from .serializers import BlogSerializer
+from .models import Blog
 
-# Create your views here.
+
+
+class BlogList(generics.ListAPIView):
+	queryset = Blog.objects.filter(status=1).order_by('-created_on')
+	serializer_class = BlogSerializer
+
+class BlogDetailView(generics.ListAPIView):
+	queryset = Blog.objects.filter(status=1)
+
+	def get(self,request,slug):
+
+		blogDetail = Blog.objects.filter(slug=slug)
+		queryset = BlogSerializer(blogDetail, many=True)
+		return Response(queryset.data)
+
+
+
+
+
+
