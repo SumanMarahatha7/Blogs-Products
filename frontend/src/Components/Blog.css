@@ -1,0 +1,10 @@
+@media only screen and (max-width:600px){
+    .detailImage{
+      width: 100%;
+      height: 250px;
+  
+    }
+    .bloglist_img{
+      width:100%;
+    }
+  }
