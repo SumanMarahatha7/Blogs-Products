@@ -1,12 +1,14 @@
-import React from 'react';
-import '../App.css';
+import React from 'react'
 
-function Home(){
-    return(
+function Home() {
+    return (
         <div>
-            <h1>React APP for Metamium Blogs & Products</h1>
+            Welcome to Blog
         </div>
-        )
+    )
 }
 
-export default Home;
+export default Home
+
+
+
