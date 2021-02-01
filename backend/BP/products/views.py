@@ -14,12 +14,11 @@ class ProductList(generics.ListAPIView):
     queryset = Product.objects.order_by('-id')
     serializer_class = ProductSerializer
 
-class CategoryDetail(APIView):
-    queryset = Product.objects.order_by('-id')
-    def get(self,request,pk):
-        queryset = self.queryset.filter(category_id=pk)
-        detail = ProductSerializer(queryset, many=True)
-        return Response(detail.data)
+class CategoryDetail(generics.ListAPIView):
+    serializer_class = ProductSerializer
+    def get_queryset(self):
+        queryset = self.kwargs['pk']
+        return Product.objects.filter(category_id=queryset)
 
 
 class Show(generics.ListAPIView):
