@@ -1,0 +1,10 @@
+.selected1:after{
+    width: 155px;
+    height: 3px;
+    position: relative;
+    display: block;
+    content: '';
+    bottom: -10px;
+    margin: auto;
+    background-color: #3866a1;
+}
