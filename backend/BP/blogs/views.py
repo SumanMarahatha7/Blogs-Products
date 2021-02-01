@@ -10,16 +10,16 @@ class BlogList(generics.ListAPIView):
 	queryset = Blog.objects.filter(status=1).order_by('-created_on')
 	serializer_class = BlogSerializer
 
+
+
+
 class BlogDetailView(generics.ListAPIView):
 	queryset = Blog.objects.filter(status=1)
+	serializer_class = BlogSerializer
 
-	def get(self,request,slug):
-
-		blogDetail = Blog.objects.filter(slug=slug)
-		queryset = BlogSerializer(blogDetail, many=True)
-		return Response(queryset.data)
-
-
+	def get_queryset(self):
+		queryset = self.kwargs['slug']
+		return Blog.objects.filter(slug = queryset)
 
 
 
